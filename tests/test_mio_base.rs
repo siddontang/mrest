@@ -59,7 +59,7 @@ struct TickHandler;
 
 impl Handler for TickHandler {
     type Timeout = ();
-    type Message = ();
+    type Message = u32;
 
     fn tick(&mut self, event_loop: &mut EventLoop<Self>) {
         if !event_loop.is_running() {
@@ -76,5 +76,7 @@ impl Handler for TickHandler {
 #[test]
 fn test_tick() {
     let mut event_loop = EventLoop::new().unwrap();
+    let sender = event_loop.channel();
+    sender.send(0).unwrap();
     event_loop.run(&mut TickHandler).unwrap();
 }

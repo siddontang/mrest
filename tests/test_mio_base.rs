@@ -62,6 +62,13 @@ impl Handler for TickHandler {
     type Message = ();
 
     fn tick(&mut self, event_loop: &mut EventLoop<Self>) {
+        if !event_loop.is_running() {
+            // Handle quit here.
+            return;
+        }
+    }
+
+    fn notify(&mut self, event_loop: &mut EventLoop<Self>, _: Self::Message) {
         event_loop.shutdown();
     }
 }

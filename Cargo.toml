@@ -1,0 +1,21 @@
+[package]
+name = "mrest"
+version = "0.0.1"
+keywords = ["web-framework", "async-io"]
+license = "MIT"
+authors = ["Siddon Tang <siddontang@gmail.com>"]
+
+[lib]
+name = "mrest"
+
+[dependencies]
+log = "0.3"
+mio = "0.5"
+quick-error = "0.2"
+
+[dev-dependencies]
+env_logger = "0.3.0"
+
+[[test]]
+name = "tests"
+path = "tests/lib.rs"
